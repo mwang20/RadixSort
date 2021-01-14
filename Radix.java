@@ -35,10 +35,10 @@ public class Radix{
   }
   
   public static int getMaximum(SortableLinkedList data){
-    int max = data.get(0);
+    int max = length(data.get(0));
     for (int i = 0; i < data.size(); i++){
-      if (data.get(i) > max){
-        max = data.get(i);
+      if (length(data.get(i)) > max){
+        max = length(data.get(i));
       }
     }
     return max;
@@ -51,7 +51,7 @@ public class Radix{
     int lengthData = data.size();
     SortableLinkedList[] buckets = new SortableLinkedList[10];
     System.out.println(lengthData + " lengthData");
-    for (int i = 0; i < length(max); i++){
+    for (int i = 0; i < max; i++){
       
       for (int k = 0; k < 10; k++){
         buckets[k] = new SortableLinkedList();
@@ -77,7 +77,7 @@ public class Radix{
     int max = getMaximum(data);
     SortableLinkedList[] buckets = new SortableLinkedList[10];
     
-    for (int i = 0; i < length(max); i++){
+    for (int i = 0; i < max; i++){
       
       for (int k = 0; k < 10; k++){
         buckets[k] = new SortableLinkedList();
