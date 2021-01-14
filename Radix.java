@@ -68,10 +68,10 @@ public class Radix{
       }
       data = new SortableLinkedList();
       merge(data, buckets);
-      //System.out.println(data);
+      // System.out.println(data);
       
     }
-
+    System.out.println(data + "new line"); //Debug print statement, shows that the linked list is sorted but tester says it isn't sorted.
   }
 
   public static void radixSort(SortableLinkedList data){
