@@ -44,11 +44,13 @@ public class Radix{
     return max;
   }
   public static void radixSortSimple(SortableLinkedList data){
-
+    
     int max = getMaximum(data);
+    
+    System.out.println(max + " max");
     int lengthData = data.size();
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    
+    System.out.println(lengthData + " lengthData");
     for (int i = 0; i < length(max); i++){
       
       for (int k = 0; k < 10; k++){
@@ -60,13 +62,13 @@ public class Radix{
         int current = data.get(j);
         int nth = nth(current, i);
         buckets[nth].add(current);
-        
+        //System.out.println(current);
       }
       
       SortableLinkedList sub = new SortableLinkedList();
       merge(sub, buckets);
       data = sub;
-      
+      System.out.println(data.toString());
     }
   }
 
@@ -89,9 +91,8 @@ public class Radix{
         
       }
       
-      SortableLinkedList sub = new SortableLinkedList();
-      merge(sub, buckets);
-      data = sub;
+      data = new SortableLinkedList();
+      merge(data, buckets);
       
     }
   }
