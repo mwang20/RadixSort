@@ -88,13 +88,24 @@ public class Radix{
       }
 
       for (int j = 0; j < lengthData; j++){
-        int current = data.get(j);        
-        int nth = nth(current, i);        
-        buckets[nth].add(current);
+        int current = data.get(j);     
+        if (current < 0){
+          int nth = nth(current, i);        
+          buckets[nth].add(current);
+        }
       }
+      
+      for (int j = 0; j < lengthData; j++){
+        int current = data.get(j);     
+        if (current > 0){
+          int nth = nth(current, i);        
+          buckets[nth].add(current);
+        }
+      }
+      
       data = new SortableLinkedList();
       merge(data, buckets);
-    //  System.out.println(data);
+      //System.out.println(data + "new line");
     }
   }
   
