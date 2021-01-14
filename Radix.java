@@ -3,7 +3,7 @@ import java.util.*;
 public class Radix{
   
   public static int nth(int n, int col){
-    if (Math.pow(n, col) > n){
+    if (Math.pow(10, col) > n){
       throw new IllegalArgumentException();
     }
     int move = col;
@@ -14,4 +14,11 @@ public class Radix{
     return nth;
   }
   
+  public static int length(int n){
+    int col = 0;
+    while (Math.pow(10, col) <= n){
+      col++;
+    }
+    return col;
+  }
 }
