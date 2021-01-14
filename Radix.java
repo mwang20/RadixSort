@@ -5,7 +5,7 @@ public class Radix{
   public static int nth(int n, int col){
     int move;
     if (Math.pow(10, col) > n){
-      move = length(n);
+      return 0;
     }
     else{
       move = col;
@@ -43,6 +43,7 @@ public class Radix{
     }
     return max;
   }
+  
   public static void radixSortSimple(SortableLinkedList data){
     
     int max = getMaximum(data);
@@ -51,12 +52,11 @@ public class Radix{
     int lengthData = data.size();
     SortableLinkedList[] buckets = new SortableLinkedList[10];
     System.out.println(lengthData + " lengthData");
+
     for (int i = 0; i < max; i++){
-      
       for (int k = 0; k < 10; k++){
         buckets[k] = new SortableLinkedList();
       }
-
       for (int j = 0; j < lengthData; j++){
         
         int current = data.get(j);
@@ -64,12 +64,11 @@ public class Radix{
         buckets[nth].add(current);
         //System.out.println(current);
       }
-      
-      SortableLinkedList sub = new SortableLinkedList();
-      merge(sub, buckets);
-      data = sub;
-      System.out.println(data.toString());
+      data = new SortableLinkedList();
+      merge(data, buckets);
+      System.out.println(data);
     }
+
   }
 
   public static void radixSort(SortableLinkedList data){
