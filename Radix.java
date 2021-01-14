@@ -48,10 +48,10 @@ public class Radix{
     
     int max = getMaximum(data);
     
-    System.out.println(max + " max");
+    //System.out.println(max + " max");
     int lengthData = data.size();
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    System.out.println(lengthData + " lengthData");
+    //System.out.println(lengthData + " lengthData");
 
     for (int i = 0; i < max; i++){
       for (int k = 0; k < 10; k++){
@@ -66,7 +66,7 @@ public class Radix{
       }
       data = new SortableLinkedList();
       merge(data, buckets);
-      System.out.println(data);
+      //System.out.println(data);
     }
 
   }
