@@ -66,12 +66,17 @@ public class Radix{
         buckets[nth].add(current);
         //System.out.println(current);
       }
-      data = new SortableLinkedList();
-      merge(data, buckets);
+      SortableLinkedList sub = new SortableLinkedList();
+      merge(sub, buckets);
+      
+      for (int n = 0; n < lengthData; n++){
+        data.remove(n);
+        data.add(n, sub.get(n));
+      }
       // System.out.println(data);
       
     }
-    System.out.println(data + "new line"); //Debug print statement, shows that the linked list is sorted but tester says it isn't sorted.
+    //System.out.println(data + "new line"); //Debug print statement, shows that the linked list is sorted but tester says it isn't sorted.
   }
 
   public static void radixSort(SortableLinkedList data){
