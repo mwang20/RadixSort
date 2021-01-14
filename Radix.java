@@ -3,10 +3,13 @@ import java.util.*;
 public class Radix{
   
   public static int nth(int n, int col){
+    int move;
     if (Math.pow(10, col) > n){
-      throw new IllegalArgumentException();
+      move = length(n);
     }
-    int move = col;
+    else{
+      move = col;
+    }
     while (move != 0){
       n = n / 10;
     }
@@ -38,11 +41,12 @@ public class Radix{
     return max;
   }
   public static void radixSortSimple(SortableLinkedList data){
-    SortableLinkedList[] buckets = new SortableLinkedList[10];
+
     int max = getMaximum(data);
     
     for (int i = 0; i < length(max); i++){
       
+      SortableLinkedList[] buckets = new SortableLinkedList[10];
       for (int j = 0; j < data.size(); j++){
         
         int current = data.get(j);
@@ -50,8 +54,27 @@ public class Radix{
         buckets[nth].add(current);
         
       }
+      SortableLinkedList sub = new SortableLinkedList();
+      merge(sub, buckets);
+      data = sub;
     }
-    data = new SortableLinkedList();
-    merge(data, buckets);
+  }
+
+  public static void radixSort(SortableLinkedList data){
+
+    int max = getMaximum(data);
+    
+    for (int i = 0; i < length(max); i++){
+      
+      SortableLinkedList[] buckets = new SortableLinkedList[10];
+      for (int j = 0; j < data.size(); j++){
+        
+        int current = data.get(j);
+        int nth = nth(current, i);
+        buckets[nth].add(current);
+        
+      }
+      merge(data, buckets);
+    }
   }
 }
