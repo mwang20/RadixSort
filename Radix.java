@@ -60,17 +60,23 @@ public class Radix{
         buckets[k] = new SortableLinkedList();
       }
 
-      for (int j = 0; j < lengthData; j++){
+    /*  for (int j = 0; j < lengthData; j++){
         int current = data.get(j);        
         int nth = nth(current, i);        
         buckets[nth].add(current);
         //System.out.println(current);
       }
+      */
+      while (data.size() > 0){
+        int current = data.get(0);
+        data.remove(0);
+        int nth = nth(current, i);
+        buckets[nth].add(current);
+      }
       SortableLinkedList sub = new SortableLinkedList();
       merge(sub, buckets);
       
       for (int n = 0; n < lengthData; n++){
-        data.remove(n);
         data.add(n, sub.get(n));
       }
       // System.out.println(data);
