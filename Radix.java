@@ -68,13 +68,7 @@ public class Radix{
         int nth = nth(current, i);
         buckets[nth].add(current);
       }
-      SortableLinkedList sub = new SortableLinkedList();
-      merge(sub, buckets);
-      
-      while (data.size() < lengthData){
-        int current = sub.remove(0);
-        data.add(current);
-      }
+      merge(data, buckets);
       // System.out.println(data);
       
     }
@@ -82,37 +76,26 @@ public class Radix{
   }
 
   public static void radixSort(SortableLinkedList data){
-
+    
     int max = getMaximum(data);
     int lengthData = data.size();
 
     for (int i = 0; i < max; i++){
       
       SortableLinkedList[] buckets = new SortableLinkedList[10];
-      
+
       for (int k = 0; k < 10; k++){
         buckets[k] = new SortableLinkedList();
       }
 
-      for (int j = 0; j < lengthData; j++){
-        int current = data.get(j);     
-        if (current < 0){
-          int nth = nth(current, i);        
-          buckets[nth].add(current);
-        }
+      while (data.size() > 0){
+        int current = data.remove(0);
+        int nth = nth(current, i);
+        buckets[nth].add(current);
       }
-      
-      for (int j = 0; j < lengthData; j++){
-        int current = data.get(j);     
-        if (current > 0){
-          int nth = nth(current, i);        
-          buckets[nth].add(current);
-        }
-      }
-      
-      data = new SortableLinkedList();
+
       merge(data, buckets);
-      //System.out.println(data + "new line");
+        
     }
   }
   
