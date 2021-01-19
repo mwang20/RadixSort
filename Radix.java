@@ -76,8 +76,10 @@ public class Radix{
       SortableLinkedList sub = new SortableLinkedList();
       merge(sub, buckets);
       
-      for (int n = 0; n < lengthData; n++){
-        data.add(n, sub.get(n));
+      while (data.size() != lengthData){
+        int current = sub.get(0);
+        sub.remove(0);
+        data.add(current);
       }
       // System.out.println(data);
       
